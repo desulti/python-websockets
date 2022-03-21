@@ -1,9 +1,16 @@
 # Importing the relevant libraries
 import websockets
 import asyncio
+import os
+ON_HEROKU = os.environ.get('ON_HEROKU')
 
+if ON_HEROKU:
+    # get the heroku port
+    port = int(os.environ.get('PORT', 17995))  # as per OP comments default is 17995
+else:
+    port = 8080
 # Server data
-PORT = 8080
+PORT = port
 print("Server listening on Port " + str(PORT))
 # A set of connected ws clients
 connected = set()
