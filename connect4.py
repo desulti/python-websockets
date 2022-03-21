@@ -1,5 +1,7 @@
 # Importing the relevant libraries
 import websockets
+import pathlib
+import ssl
 import asyncio
 import os
 on_heroku = False
