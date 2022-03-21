@@ -2,10 +2,11 @@
 import websockets
 import asyncio
 import os
-ON_HEROKU = os.environ.get('ON_HEROKU')
-
-print(ON_HEROKU)
-if ON_HEROKU:
+on_heroku = False
+if 'ON_HEROKU' in os.environ:
+  on_heroku = True
+print(on_heroku)
+if on_heroku:
     # get the heroku port
     port = int(os.environ.get('PORT', 17995))  # as per OP comments default is 17995
 else:
