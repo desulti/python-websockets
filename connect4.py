@@ -42,7 +42,7 @@ if on_heroku:
         pathlib.Path(__file__).with_name('localhost.pem'))
 
     start_server = websockets.serve(
-        echo, "0.0.0.0", PORT, ssl=ssl_context)
+        echo, "0.0.0.0", PORT)
 else:
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     ssl_context.load_cert_chain(
