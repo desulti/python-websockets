@@ -38,4 +38,22 @@ async def echo(websocket, path):
 # Start the server
 start_server = websockets.serve(echo, "0.0.0.0", PORT, ping_interval=None)
 asyncio.get_event_loop().run_until_complete(start_server)
+async def heartbeat(self, connection):
+        '''
+        Sending heartbeat to server every 5 seconds
+        Ping - pong messages to verify connection is alive
+        '''
+        while True:
+            try:
+            	for conn in connected:
+                	if conn != websocket:
+                		await connection.send('ping')
+                		await asyncio.sleep(10)
+            except websockets.exceptions.ConnectionClosed:
+                print('Connection with server closed')
+                break
+tasks = [
+        asyncio.ensure_future(client.heartbeat(connection))
+    ]
+asyncio.get_event_loop().run_until_complete(asyncio.wait(tasks))
 asyncio.get_event_loop().run_forever()
