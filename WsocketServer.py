@@ -43,19 +43,17 @@ async def heartbeat():
         Sending heartbeat to server every 5 seconds
         Ping - pong messages to verify connection is alive
         '''
-        while True:
-            try:
-                print(connected)
-                for conn in connected:
-                    print("Save client")
-                    await conn.send('ping')
-                await asyncio.sleep(10)
-            except websockets.exceptions.ConnectionClosed:
-                print('Connection with server closed')
-                break
+        try:
+            print(connected)
+            for conn in connected:
+                print("Save client")
+                await conn.send('ping')
+            await asyncio.sleep(10)
+        except websockets.exceptions.ConnectionClosed:
+            print('Connection with server closed')
 async def main():
     task1 = asyncio.create_task(heartbeat())
-    await asyncio.sleep(0.25)
+    await asyncio.sleep(10)
     await task1
 async def forever():
     while True:
