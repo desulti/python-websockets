@@ -36,6 +36,6 @@ async def echo(websocket, path):
     finally:
         connected.remove(websocket)
 # Start the server
-start_server = websockets.serve(echo, "localhost", PORT, ping_interval=None)
+start_server = websockets.serve(echo, "0.0.0.0", PORT, ping_interval=None)
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
