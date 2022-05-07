@@ -1,8 +1,7 @@
 # Importing the relevant libraries
 import asyncio
-import os
 import websockets
-
+import os
 # Set port
 on_heroku = False
 if 'ON_HEROKU' in os.environ:
