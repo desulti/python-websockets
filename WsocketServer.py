@@ -47,8 +47,9 @@ async def heartbeat():
             try:
             	for conn in connected:
                 	if conn != websocket:
+                		print("Save client")
                 		await connection.send('ping')
-                		await asyncio.sleep(10)
+                await asyncio.sleep(10)
             except websockets.exceptions.ConnectionClosed:
                 print('Connection with server closed')
                 break
