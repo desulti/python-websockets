@@ -34,6 +34,7 @@ async def echo(websocket, path):
     except websockets.exceptions.ConnectionClosed as e:
         print("A client just disconnected")
     finally:
+        print("Just join but is removed")
         connected.remove(websocket)
 # Start the server
 start_server = websockets.serve(echo, "0.0.0.0", PORT, ping_interval=None)
