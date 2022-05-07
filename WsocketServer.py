@@ -45,6 +45,7 @@ async def heartbeat():
         '''
         while True:
             try:
+                print(connected)
                 for conn in connected:
                     print("Save client")
                     await conn.send('ping')
